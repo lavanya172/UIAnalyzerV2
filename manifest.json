@@ -32,5 +32,5 @@
 	],
 	"options_page": "options.html",
     "manifest_version": 2,
-	"web_accessible_resources": [ "tray.html","config.json","FileSaver.js","es6-promise.auto.min.js","jspdf.min.js","html2canvas.min.js","html2pdf.bundle.min.js","jquery.wordexport.js","images/close_icon.png","UI.png"]
+	"web_accessible_resources": [ "tray.html","config.json","FileSaver.js","es6-promise.auto.min.js","jspdf.min.js","html2canvas.min.js","html2pdf.bundle.min.js","jquery.wordexport.js","images/close_icon.png","UI.png","images/gold_badge.jpg","images/platinum_badge.jpg","images/silver_badge.jpg","images/bronze_badge.jpg","images/tip.png"]
   }
