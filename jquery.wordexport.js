@@ -48,12 +48,16 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             var images = Array();
             var img = markup.find('img');
             img.removeClass("nonedisplay");
+            markup.find('img#tip_icon').addClass("nonedisplay");
             var pdf = new jsPDF("p", "mm", "a4");
 
            // var pdf = new jsPDF({orientation: "p", lineHeight: 0.25});
             pdf.setLineHeightFactor(0.5);
             pdf.setFontSize(1);
             for (var i = 0; i < img.length; i++) {
+                if(img[i].id == "delite_badge" || img[i].id == "tip_icon") {
+                    continue
+                };
                 // Calculate dimensions of output image
                 /*var w = Math.min(img[i].width, options.maxWidth);
                 var h = img[i].height * (w / img[i].width);*/
