@@ -171,7 +171,7 @@ function takeScreenshot() {
 				$('#crop_canvas').remove();
 
 				//var imgtag = "<img class='nonedisplay' src = '"+cropped_screenshot+"' width='500' ></img>";
-				var imgtag = "<img class='nonedisplay' src = '" + cropped_screenshot + "'></img>";
+				var imgtag = "<img class='nonedisplay' src = '" + cropped_screenshot + "' style='margin-bottom: 40px;'></img>";
 				$('#he_card_container').prepend(imgtag);
 			}
 		});
@@ -331,7 +331,7 @@ function evaluateItems(json) {
 	if(document.getElementById('summary_of_compliance') != null){
 		document.getElementById('summary_of_compliance').remove();
 	}
-	var summary = '<div id="summary_of_compliance">' + heading_row + delite_compliant_percent + '</div>';
+	var summary = '<div id="summary_of_compliance">' + heading_row + delite_compliant_percent + '<div style="padding-top: 125px;"><hr></div></div>';
 	$('#he_card_container').prepend(summary);
 	
 	new JustGage({

@@ -91,6 +91,10 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                // mhtmlBottom += "Content-Location: " + images[i].location + "\n";
                // mhtmlBottom += "Content-Type: " + images[i].type + "\n";
                // mhtmlBottom += "Content-Transfer-Encoding: " + images[i].encoding + "\n\n";
+                if(!images[i]) {
+                    console.log("images undefined");
+                    continue;
+                }
                 mhtmlBottom += images[i].data + "\n\n";
             }
            // mhtmlBottom += "--NEXT.ITEM-BOUNDARY--";
