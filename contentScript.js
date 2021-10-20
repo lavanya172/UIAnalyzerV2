@@ -300,7 +300,7 @@ function evaluateItems(json) {
 	var badge = "";
 	var tip = "";
 
-	if (overallPercent >= 0 && overallPercent <= 40) {
+	if (overallPercent >= 1 && overallPercent <= 40) {
 		nextBadge = 41 - overallPercent;
 		//tip = "Guidelines: Correct " + nextBadge.toFixed(0) + "% UI recommendations to get your next badge!";
 		badge = '<img id="delite_badge" src="' + bronze_badge +'" title="'+tip+'" alt="badge" width="95" height="100">';
