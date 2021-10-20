@@ -22,6 +22,7 @@ var silver_badge = chrome.runtime.getURL('images/silver_badge.jpg');
 var platinum_badge = chrome.runtime.getURL('images/platinum_badge.jpg');
 var tip_image = chrome.runtime.getURL('images/tip.png');
 
+
 function enableFocus() {
 	$('.ua-focus').css({ 'border': '3px solid red' });
 }
@@ -47,10 +48,10 @@ $("#add").load(trayUrl, function () {
 	// 					"</div>";
 	// $('#he_tray').append(he_tray_close);
 });
-
+var config_json = "";
 fetch(url)
 	.then((response) => response.json()) //assuming file contains json
-	.then((json) => { evaluateItems(json); });
+	.then((json) => { config_json = json; evaluateItems(json); });
 
 $(document).on('click', '#he_tray_close', function (e) {
 	closeTray();
@@ -58,6 +59,10 @@ $(document).on('click', '#he_tray_close', function (e) {
 
 $(document).on('click', '#focus-errors', function (e) {
 	enableFocus();
+});
+
+$(document).on('click', '#autocorrect-errors', function (e) {
+	autocorrect();
 });
 
 $(document).on('click', '#remove-focus', function (e) {
@@ -319,7 +324,7 @@ function evaluateItems(json) {
 
 	var tip =  '<img id="tip_icon" src="'+tip_image+'" title="'+recommendations+'" alt="i" style="vertical-align: bottom;padding-left: 7px;">'
 	var heading_row = "<div class='he_card he_reset'  style='display:block;'><div style='width: 100%;'><div class='he_reset he_card_title' style='line-height: 24px; width: 33%; float: left;text-align: center;'><div>Standard</div></div><div style='width: 33%; float: left;text-align: center;'> Overall </div><div style='width: 33%; height: 25px; float: left;text-align: center;'><div> Badge"+tip+" </div></div></div></div>";
-	var delite_compliant_percent = "<div class='he_card he_reset'  style='display:block;'><div style='width: 100%;'><div class='he_reset he_card_title' style='line-height: 24px; width: 33%; height:100px; float: left;text-align: center;'><div style='margin-top:35px;'><a target='_blank' href='https://delite.eur.ad.sag'>Delite</a></div></div><div id='g2' class='gauge' style='width: 33%; float: left; height: 100px;text-align: center;'></div><div style='width: 33%; height: 100px; float: left;text-align: center;'><div>" + badge + "</div></div></div></div>"
+	var delite_compliant_percent = "<div class='he_card he_reset'  style='display:block;'><div style='width: 100%;'><div class='he_reset he_card_title' style='line-height: 24px; width: 33%; height:100px; float: left;text-align: center;'><div style='margin-top:35px;font-size: 20px;'><a target='_blank' href='https://delite.eur.ad.sag'>Delite</a></div></div><div id='g2' class='gauge' style='width: 33%; float: left; height: 100px;text-align: center;padding-top: 5px;'></div><div style='width: 33%; height: 100px; float: left;text-align: center;'><div>" + badge + "</div></div></div></div>"
 	var page = '<p class="he_reset he_card_text" style="margin-bottom: 10px; !important; word-break: break-all; color: #5c85c8 !important;display:inline-block;">' + 'URL: ' + url + '</p>' + '<div class= "he_reset" style="color: #333333;width:100%;margin-bottom: 10px;display: block !important;">Compliance % : ' + percent.toFixed(0) + "<meter style='margin: 0px 0px 1px 10px;' id='myMeter' min='0' low='50' high='100' max='100' value='"+compliancePercent+"'></meter></div>";
 	var recommendationContent = "<div class='he_reset he_card_title' style='line-height: 24px; vertical-align:middle;'>Guidelines: " + recommendations + "</div>";
 	$('#he_card_container').prepend('<hr>');
@@ -391,4 +396,25 @@ function getPseudoStyle(id, style) {
 		}
 		return targetrule;
 	}
+}
+
+function autocorrect() {
+	removeFocus();
+	var elements = document.getElementsByClassName("ua-focus");
+	for (var i = 0, len = elements.length; i < len; i++) {
+		var tag = elements[i].tagName.toLowerCase();
+		if(elements[i]) {
+			elements[i].classList.add("ua-" + tag);
+			//elements[i].classList.remove("ua-focus");
+		}
+	}
+	$(".ua-focus").removeClass("ua-focus");
+	if(document.getElementById("search-box")){
+		document.getElementById("search-box").querySelector(".dlt-icon-search").classList.remove("font-default-white");
+	}
+	// fetch(url)
+	// 	.then((response) => response.json())
+	// 	.then((json) => { evaluateItems(json); });
+	evaluateItems(config_json);
+
 }

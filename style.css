@@ -1436,3 +1436,61 @@ div#purple_dialog_close{
 }
 
 
+.ua-button {
+    font-size: 14px !important;
+    color: rgb(255, 255, 255) !important;
+    height: 32px !important;
+    background-color: rgb(23, 118, 191) !important;
+}
+.ua-h1 {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    line-height: 32px !important;
+    color: rgb(51, 51, 51) !important;
+}
+.ua-h2 {
+    font-size: 22px !important;
+    font-weight: 500 !important;
+    line-height: 32px !important;
+    color: rgb(51, 51, 51) !important;
+}
+.ua-h3 {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 28px !important;
+    color: rgb(51, 51, 51) !important;
+}
+.ua-h4 {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+    color: rgb(51, 51, 51) !important;
+}
+.ua-h5 {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+    color: rgb(51, 51, 51) !important;
+}
+.ua-h6 {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+    color: rgb(51, 51, 51) !important;
+}
+.ua-input {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 14px !important;
+    color: rgb(0, 0, 0) !important;
+    background-color: rgb(255, 255, 255) !important;
+    border-width: 1px !important;
+    border-color: rgb(0, 0, 0) !important;
+    height: 32px !important;
+}
+.ua-input::placeholder {
+    color: #333333 !important;
+}
+
+
+

@@ -1,10 +1,9 @@
 {
 	"button": {
-		"fontSize": "14px",
+		"font-size": "14px",
 		"color": "rgb(255, 255, 255)",
-		"fontWeight": "400",
 		"height": "32px",
-		"backgroundColor": "rgb(23, 118, 191)",
+		"background-color": "rgb(23, 118, 191)",
 		"label": "button"
 	},
 	"h1": {
@@ -56,7 +55,6 @@
 		"color": "rgb(0, 0, 0)",
 		"height": "24px or 32px or 40px",
 		"background-color": "rgb(255, 255, 255)",
-		"border-width": "1px",
 		"border-color": "rgb(0, 0, 0)",
 		"label": "input field"
 	}
