@@ -55,7 +55,6 @@
 		"color": "rgb(0, 0, 0)",
 		"height": "24px or 32px or 40px",
 		"background-color": "rgb(255, 255, 255)",
-		"border-color": "rgb(0, 0, 0)",
 		"label": "input field"
 	}
 }
