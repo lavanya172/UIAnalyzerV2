@@ -176,8 +176,10 @@ function takeScreenshot() {
 				$('#crop_canvas').remove();
 
 				//var imgtag = "<img class='nonedisplay' src = '"+cropped_screenshot+"' width='500' ></img>";
-				var imgtag = "<img class='nonedisplay' src = '" + cropped_screenshot + "' style='margin-bottom: 40px;'></img>";
-				$('#he_card_container').prepend(imgtag);
+				var imgtag = "<img class='nonedisplay' src = '" + cropped_screenshot + "' style='margin-left:25px; margin-top: 25px; margin-bottom: 40px;'></img>";
+				//$('#compliance_percentage').append(imgtag);
+			//	$('#screen_url').append(imgtag);
+				$('#error-table-div').prepend(imgtag);
 			}
 		});
 	}, 50); // timeout time
@@ -283,7 +285,7 @@ function evaluateItems(json) {
 					delite_compliant_count++;
 				} else {
 					non_delite_compliant_count++;
-					if (non_delite_compliant_count == 1) tray_content = '<div class="errors-table" style="margin: 0px -24px 24px -24px;">' + tray_content;
+					if (non_delite_compliant_count == 1) tray_content = '<div id="error-table-div" class="errors-table" style="margin: 0px -24px 24px -24px;">' + tray_content;
 				}
 				if (reason.length > 0) {
 					//<div style="display:block; margin-bottom:12px"></div><hr><div style="display:block; margin-bottom:12px"></div>
@@ -323,9 +325,9 @@ function evaluateItems(json) {
 	recommendations = "Guidelines: Correct atleast " + nextBadge.toFixed(0) + "% UI recommendations to get your next badge!"
 
 	var tip =  '<img id="tip_icon" src="'+tip_image+'" title="'+recommendations+'" alt="i" style="vertical-align: bottom;padding-left: 7px;">'
-	var heading_row = "<div class='he_card he_reset'  style='display:block;'><div style='width: 100%;'><div class='he_reset he_card_title' style='line-height: 24px; width: 33%; float: left;text-align: center;'><div>Standard</div></div><div style='width: 33%; float: left;text-align: center;'> Overall </div><div style='width: 33%; height: 25px; float: left;text-align: center;'><div> Badge"+tip+" </div></div></div></div>";
+	var heading_row = "<div class='he_card he_reset'  style='display:block;'><div style='width: 100%;'><div class='he_reset he_card_title' style='line-height: 24px; width: 33%; float: left;text-align: center;'><div>Standard</div></div><div style='width: 33%; float: left;text-align: center;'>Overall</div><div style='width: 33%; height: 25px; float: left;text-align: center;'><div>Badge"+tip+" </div></div></div></div>";
 	var delite_compliant_percent = "<div class='he_card he_reset'  style='display:block;'><div style='width: 100%;'><div class='he_reset he_card_title' style='line-height: 24px; width: 33%; height:100px; float: left;text-align: center;'><div style='margin-top:35px;font-size: 20px;'><a target='_blank' href='https://delite.eur.ad.sag'>Delite</a></div></div><div id='g2' class='gauge' style='width: 33%; float: left; height: 100px;text-align: center;padding-top: 5px;'></div><div style='width: 33%; height: 100px; float: left;text-align: center;'><div>" + badge + "</div></div></div></div>"
-	var page = '<p class="he_reset he_card_text" style="margin-bottom: 10px; !important; word-break: break-all; color: #5c85c8 !important;display:inline-block;">' + 'URL: ' + url + '</p>' + '<div class= "he_reset" style="color: #333333;width:100%;margin-bottom: 10px;display: block !important;">Compliance % : ' + percent.toFixed(0) + "<meter style='margin: 0px 0px 1px 10px;' id='myMeter' min='0' low='50' high='100' max='100' value='"+compliancePercent+"'></meter></div>";
+	var page = '<p id="screen_url" class="he_reset he_card_text" style="margin-bottom: 10px; !important; word-break: break-all; color: #5c85c8 !important;display:inline-block;">' + 'URL: ' + url + '</p>' + '<div id="compliance_percentage" class= "he_reset" style="color: #333333;width:100%;margin-bottom: 10px;display: block !important;">Compliance % : ' + percent.toFixed(0) + "<meter style='margin: 0px 0px 1px 10px;' id='myMeter' min='0' low='50' high='100' max='100' value='"+compliancePercent+"'></meter></div>";
 	var recommendationContent = "<div class='he_reset he_card_title' style='line-height: 24px; vertical-align:middle;'>Guidelines: " + recommendations + "</div>";
 	$('#he_card_container').prepend('<hr>');
 	$('#he_card_container').prepend(tray_content + '</div>');

@@ -14,7 +14,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             };
             // Clone selected element before manipulating it
             var markup = $(this).clone();
-
+            console.log("markup.html()------->"+markup.html());
             // Remove hidden elements from the output
             markup.each(function() {
                 var self = $(this);
@@ -22,29 +22,13 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                     self.remove();
                 }
             });
-            // var a=markup.html();
-            // var b= a[3].children;
-            // for(var c=0;c<b.length;c++){
-            //     if(b[c].className=="dummy-t"){
-            //         /*var b=innerSelf.children();
-            //         console.log(index,this);
-            //         console.log(index,b.length);*/
-            //         b[c].setAttribute("background-color","yellow");
-            //     }
-            // }
-            /*a.each(
-                function(index) {
-                    var innerSelf=$(this);
-                    if(a[3].className=="dummy-t"){
-                        var b=innerSelf.children();
-                        console.log(index,this);
-                        console.log(index,b.length);
-                        a[3].css("background-color", "yellow");
-                    }
-                }
-            );*/
-            //console.log("aaaaaaa-------"+a);
-            // Embed all images using Data URLs
+            var summary = markup.find('div#summary_of_compliance');
+            summary.prepend("<div id='UI_title' style='background-color: lightblue;'><br><center><h2 style=\'font-weight: 500;font-family: \"Times New Roman\", Times, serif; color: black;line-height: 32px;display: inline;\'>UI Analyzer</h2></center><br></div><br>"+
+            "<h2 style=\' font-weight: 500; font-family: \"Times New Roman\", Times, serif; line-height: 32px;display: inline;\'>Summary</h2><br><br><br>");
+            summary.append("<h2 style=\' font-weight: 500; font-family: \"Times New Roman\", Times, serif; line-height: 32px;display: inline;\'>Recommendations</h2><br><br><br>");
+            var gaugeDiv = markup.find('div#g2');
+            gaugeDiv.css({ 'padding-left': '40px' });
+
             var images = Array();
             var img = markup.find('img');
             img.removeClass("nonedisplay");
@@ -73,8 +57,8 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                 // Get data URL encoding of image
                 var uri = canvas.toDataURL("image/png");
                 $(img[i]).attr("src", img[i].src);
-                img[i].width = pdfWidth*3;
-                img[i].height = pdfHeight*3;
+                img[i].width = pdfWidth*3.2;
+                img[i].height = pdfHeight*3.2;
                 // Save encoded image to array
                 images[i] = {
                     type: uri.substring(uri.indexOf(":") + 1, uri.indexOf(";")),
@@ -105,65 +89,6 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             // Aggregate parts of the file together
             var fileContent = static.mhtml.top.replace("_html_", static.mhtml.head.replace("_styles_", styles) + static.mhtml.body.replace("_body_", markup.html())) + mhtmlBottom;
 
-            // Create a Blob with the file contents
-          /*  var blob = new Blob([fileContent], {
-                type: "application/msword;charset=utf-8"
-            });*/
-           // saveAs(blob, fileName + ".pdf");
-           /* var printWindow = window.open('', '', 'height=400,width=800');
-            printWindow.document.write(fileContent);
-            printWindow.print();*/
-           /* var doc = new jsPDF();
-            doc.output("blob");
-            doc.html(fileContent, {
-                callback: function(doc) {
-                    doc.save("output.pdf");
-                },
-                x: 10,
-                y: 10
-            });*/
-            //doc.fromHTML($temp.html(),{});
-            // saveAs(blob, fileName + ".doc");
-                //Set the File URL.
-           /* var oReq = new XMLHttpRequest();
-// The Endpoint of your server
-            var URLToPDF = "https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf";
-
-// Configure XMLHttpRequest
-            oReq.open("GET", URLToPDF, true);
-
-// Important to use the blob response type
-            oReq.responseType = "blob";
-
-// When the file request finishes
-// Is up to you, the configuration for error events etc.
-            oReq.onload = function() {
-                // Once the file is downloaded, open a new window with the PDF
-                // Remember to allow the POP-UPS in your browser
-                var file = new Blob([fileContent], {
-                    type: 'application/pdf'
-                });
-
-                // Generate file download directly in the browser !
-                saveAs(file, "mypdffilename.pdf");
-            };
-
-            oReq.send();*/
-           // window.jsPDF = window.jspdf.jsPDF;
-         //   var pdf = new jsPDF();
-           /* pdf.canvas.height = 72 * 11;
-            pdf.canvas.width = 72 * 8.5;
-*/
-            //var source = window.document.getElementsByTagName("body")[0];
-
-           /* pdf.fromHTML(markup.html(), 15, 15, {
-                    'width': 100 // max width of content on PDF
-                },
-                function(bla){
-                pdf.addPage();
-                    pdf.addPage();
-                pdf.save('UI-AnalyzerReport.pdf');},
-                0);*/
             var opt = {
                 margin:       [10, 15, 10, 15],
                 filename:     `UI-AnalyzerReport.pdf`,
@@ -172,10 +97,6 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
             html2pdf().from(markup.html()).set(opt).save();
-
-            /*  pdf.fromHTML(source, 15, 15);
-
-              pdf.save('test.pdf');*/
         };
     })(jQuery);
 } else {
