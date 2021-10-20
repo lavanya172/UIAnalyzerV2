@@ -1484,8 +1484,8 @@ div#purple_dialog_close{
     line-height: 14px !important;
     color: rgb(0, 0, 0) !important;
     background-color: rgb(255, 255, 255) !important;
-    border-width: 1px !important;
-    border-color: rgb(0, 0, 0) !important;
+    /*border-width: 1px !important;*/
+    /*border-color: rgb(0, 0, 0) !important;*/
     height: 32px !important;
 }
 .ua-input::placeholder {
