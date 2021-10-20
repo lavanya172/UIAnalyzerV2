@@ -92,7 +92,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             var opt = {
                 margin:       [10, 15, 10, 15],
                 filename:     `UI-AnalyzerReport.pdf`,
-                image:        { type: 'png', quality: 0.98 },
+                image:        { type: 'jpeg', quality: 0.98 },
                 html2canvas:  { scale: 2, useCORS: true },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
