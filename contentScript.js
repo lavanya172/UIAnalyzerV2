@@ -87,6 +87,11 @@ $(document).on('click', '#maximize-tray', function (e) {
 			max: 100,
 			symbol: '%',
 			pointer: true,
+			levelColors: [
+				"#a52a2a",
+				"#ffa500",
+				"#008000"
+			  ],
 			pointerOptions: {
 				toplength: -15,
 				bottomlength: 10,
@@ -349,6 +354,11 @@ function evaluateItems(json) {
         max: 100,
         symbol: '%',
         pointer: true,
+		levelColors: [
+			"#a52a2a",
+			"#ffa500",
+			"#008000"
+		  ],
         pointerOptions: {
           toplength: -15,
           bottomlength: 10,
@@ -370,6 +380,11 @@ function evaluateItems(json) {
         max: 100,
         symbol: '%',
         pointer: true,
+		levelColors: [
+			"#FF0000",
+			"#FFFF00",
+			"#31B404"
+		  ],
         pointerOptions: {
           toplength: -15,
           bottomlength: 10,
