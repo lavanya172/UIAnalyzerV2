@@ -51,16 +51,4 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
           file: 'contentScript.js'
         });
     });
-    // chrome.tabs.create({
-    //     url: chrome.extension.getURL('contentScript.js'),
-    //     active: false
-    // }, function(tab) {
-    //     // After the tab has been created, open a window to inject the tab
-    //     chrome.windows.create({
-    //         tabId: tab.id,
-    //         type: 'popup',
-    //         focused: true
-    //         // incognito, top, left, ...
-    //     });
-    // });
 });

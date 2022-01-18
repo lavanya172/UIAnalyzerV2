@@ -1,5 +1,3 @@
-//$("body").css("cssText", "margin-left: 400px !important; width: calc(100% - 400px) !important; position:absolute !important; overflow:scroll !important; cursor: pointer !important;");
-
 
 chrome.runtime.onMessage.addListener(
 	function (request, sender, sendResponse) {
@@ -41,12 +39,6 @@ $("body").append('<div id="mini_tray" style="position: fixed; bottom: 0px; right
 	'\t</div>')
 $("body").append('<div id="chart_div" style="width: 400px; height: 120px;"></div>')
 $("#add").load(trayUrl, function () {
-	// Add the close button
-	// var he_tray_close = "<div id='he_tray_close' class='he_close_button'>"+
-	// 					"<div class='he_close_left'></div>"+
-	// 					"<div class='he_close_right'></div>"+
-	// 					"</div>";
-	// $('#he_tray').append(he_tray_close);
 });
 var config_json = "";
 fetch(url)
@@ -130,7 +122,6 @@ function closeTray() {
 }
 
 function openTray(a) {
-	//$("body").css("cssText", "margin-left: 400px !important; width: calc(100% - 400px) !important; position:absolute !important; overflow:scroll !important; cursor: pointer !important;");
 	$("body").prepend(a);
 	$("body").append("<div id='ui_analyser_overlay' class='he_overlay'></div>");
 	$("body").append('<div id="mini_tray" style="position: fixed; bottom: 0px; right: 20px; padding: 5px;border: 2px solid #1776bf;background: #1776bf;color:#FFFFFF">\n' +
@@ -429,9 +420,6 @@ function autocorrect() {
 	if(document.getElementById("search-box")){
 		document.getElementById("search-box").querySelector(".dlt-icon-search").classList.remove("font-default-white");
 	}
-	// fetch(url)
-	// 	.then((response) => response.json())
-	// 	.then((json) => { evaluateItems(json); });
 	evaluateItems(config_json);
 
 }
